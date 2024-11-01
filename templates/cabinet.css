@@ -1,0 +1,77 @@
+
+.wlfc_tree{
+  position:relative;
+  display:block;
+  width:60%;
+  list-style-type: none;
+}
+
+.wlfc_tree{ 	list-style-type: none;}
+.wlfc_tree ul li {	list-style-type: none;}
+
+.wlfc_tree a { text-decoration: none; }
+
+.node{
+    position:relative;;
+    margin-top:0.25em;
+	transition: all 1.0s ease;
+    padding:0.1em 0.5em 0.2em;
+ 
+ }
+   
+/*
+list-style-type: '\hex';
+http://www.alanwood.net/demos/webdings.html#:~:text=Webdings%20character%20set%20and%20equivalent%20Unicode%20characters%20WINGDINGS,documented%20feature%20of%20HTML%20and%20is%20not%20reliable.
+	  
+border-image: repeating-linear-gradient(30deg, #4d9f0c, #9198e5, #4d9f0c 20px) 60;
+border-image: linear-gradient(#f6b73c, #4d9f0c) 30;
+
+*/
+
+.home{
+  margin:0 0 0.5em 0.86em;
+  padding:0.5em 0em 0.5em 1.5em;
+  border-left:0.1em #ccc dotted;
+  border-bottom:0.1em #ccc dotted;
+  background: #002b80;
+  color: white;
+  box-shadow: 5px 2px 2px grey;
+ }
+  .home:before{
+	content: '\1F5D6\A0\A0';
+}
+ .middle{
+  margin:0 0 0.5em 0.86em;
+  padding:0.5em 0.5em 0.5em 1.5em;
+  border-left:0.1em #ccc dotted;
+  border-bottom:0.1em #ccc dotted;
+  background: #fcf299;
+  color: darkgrey;
+  box-shadow: 5px 2px 2px lightgrey;
+ }
+ .middle:before{
+	content: '\1F5BF\A0\A0';
+}
+.endpoint{
+  margin:10 0 0.5em 0.86em;
+  padding:0.5em 0.5em 0.5em 1.5em;
+  border-left:0.1em #ccc dotted;
+  border-bottom:0.1em #ccc dotted;
+  box-shadow: 8px 4px 4px darkblue;
+  background: white;
+  color: darkblue;
+ }
+ .endpoint:before{
+	content: '\1F5B9\A0\A0';
+}
+
+details[open] .middle{
+  height:auto;
+  max-height:99em !important;
+  transition: all 1.2s ease;
+  color: darkblue;
+}
+details:not([open]) .middle{
+  height:20px !important;
+  
+}

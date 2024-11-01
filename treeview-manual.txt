@@ -1,0 +1,121 @@
+<h1>Tree View</h1>
+<h2>Introduction</h2>
+<p>The <b>tree view</b> displays any array of paths (e.g. '\\a\\b\\c\\d\\', 'a\\b\\b', 'a\\c' etc) in Windows path format (not URL or Linux) as a hierarchy based on the specified style template (or default if nothing is specified).</p>
+<p>There are a number of pure CSS style templates that are uploaded with the plugin. These can all be altered to suit your design. There are also a range of other templates available.</p>
+<p>The hierachy list has a number of sources that can be specified from S3 structures, file structures, upload folders, plugin folders, page hierarchy or a custom list.</p>
+<p>Up to <b>7</b> levels of hierarchy can be displayed in any one tree.</p>
+<p>End-nodes in the tree can hyperlink to files or other links so it can be used as a navigation tool.
+<p>If media files are found as an end-node in a file tree, the image can be included in the tree as an image tile.</p>
+<p>This can be combined with the <b>Wolfe Candy Tool Suite</b> for enriched functionality e.g. S3 bucket folder lists and using <b>Private Content</b> shortcode to limit the viewing of tree structures to specified roles.</p>
+
+<h2>Installation</h2>
+<p>Follow the usual Wordpress instructions to install the plugin files. Either copy a ZIP archive of the plugin folder contents into the Word Press plugins folder or install it directly from the Wordpress repositiory.</p>
+<p>Additional icon and template sets can also be uploaded as ZIP.</p>
+<p><b>Note:</b> If using tree view with file and folder functionality you will only be able to list or show links to files and structures that the web server has sufficient permissions granted by the underlying file structure to do so. If the web server does not have access then it will not show any node that it does not have access to. If there are no permissions or an incorrect path is passed then the tree may be blank.</p>
+
+<h2>Shortcode</h2>
+<p>The following shortcode command can be inserted into any page, post or widget:</p>
+<li><b>[show-tree]</b> displays a tree at the shortcode position. Optional arguments can be included to influence the behaviour of the tree using <b>[show-tree arg1="value1" arg2="value2" ...]</b> 
+<p>NB: each tree is associated to a style template* - only 1 style template can be used per page or else they will combine into junk. However - you can have as many trees as you want on a page as long as they use the same style template.</p>
+
+<h2>Usage</h2>
+<p>The following arguments can be used in the shortcode or as POST/GET arguments: </p>
+<li><b>[tree_source = "'\\a\\b\\c\\d\\', 'a\\b\\b', 'a\\c'"]</b> - any list can be passed in filename format
+<li><b>[root = "\\"]</b> - the start point or subfolder from which to display the tree
+<li><b>[style_template = "default"]</b> CSS template* to use. If nothing is specified then the "default" template will used.
+<li><b>[icon_home = ""]</b> icons** can be specified as icon names or special characters/html entities using <b>&xx;</b> - see the instruction manual on <b>Special Characters</b>
+<li><b>[icon_middle = ""]</b> 
+<li><b>[icon_endpoint = ""]</b>
+<li><b>[style_collapse = "true"]</b> the tree is dynamic so that branches can collapse or expand by clicking the node rather than a fixed view of all branches
+<li><b>[source = "page-hierarchy"]</b> is the imported source*** of the path list if not manually specified
+<li><b>[endpoint_filter=""]</b> // CSV list of matches to include - spaces count in search in format .png,.jpg,.pdf (.png or .jpg or .pdf)
+<li><b>[tree_filter=""]</b> CSV list of matches to include - spaces count in search
+<li><b>[hidden_filter = "true"]</b> exclude files or folders starting with "."
+<li><b>[endpoint_link = "true"]</b>enables the endpoint as a hyperlink if one is set, or false to disallow all links
+<li><b>[endpoint_image = "true"]</b> displays an image tile if the endpoint is a media file
+<li><b>[endpoint_image_size = "30"]</b> size in pixels of a square image tile
+
+<p>NB: * More templates can be uploaded but initially the following are available as standard:</p>
+<li>basic.css
+<li>boxes.css
+<li>cabinet.css
+<li>connected.css
+<li>default.css
+<li>elegant.css
+<li>elegant2.css
+<li>entity.css
+<li>hierarchy.css
+
+<p>NB: ** If the <b>Wolfe Candy Tool Suite</b> is installed then the full icon sets are available to use (and other icon sets are available to download). The following subset is included with this plugin:</p>
+<li>file-cabinet
+<li>go-home-8
+<li>gpicview
+<li>graph
+<li>help-contents-5
+<li>instructions2.jpeg
+<li>link.gif
+<li>mail-attach
+<li>media-player
+<li>newspaper
+<li>notepad
+<li>phone-green
+<li>post-it-note
+<li>question_2
+<li>rating
+<li>reference
+<li>smilie
+<li>user-id
+<li>view-list-tree-4
+<li>word.gif
+
+<p>NB: *** If the <b>Wolfe Candy Tool Suite</b> is installed then more sources are included including S3 buckets and XML documents. The following subset is included with this plugin:</p>
+<li><b>plugin-folder</b> displays the contents of the plugin folder - useful for plugin developers
+<li><b>uploads-folder</b> displays the contents of the <b>Word Press</b> uploads folder
+<li><b>root-folder</b> displays the contents of any path that the system has back-end access to as specified in the <b>root</b> argument 
+<li><b>manual</b> displays a manual tree source provided using shortcode
+
+<h2>Word Press Developers</h2>
+<p>The tree can be called using the class <b>WlfC_Treeview</b>. The following are available methods and arguments:</p>
+<li>All of the arguments in the Usage section are available e.g. <b>[style_template="template"]</b> is called as <b>$class->style_template="";</b>
+<li><b>HTML_out = "";</b> - stores the result of the <b>BuildTree</b> method
+<li><b>style_order = "ul";</b> or "ol" for numbered list
+<li><b>slug = "";</b> is the plugin name
+<li><b>endpoint_link_pattern = "<a href='[endpoint_url]'>[endpoint_name]</a>"; </b> is the pattern to use to create a hyperlink at each endpoint. Other examples are:<ul>
+<li><b>endpoint_link_pattern = "<a href='[return_url]'>[endpoint_name]</a>"; </b> example to return POST endpoint name to calling page to process using different plugin shortcode
+<li><b>endpoint_link_pattern = "<a href='https://custom.wordpress.url.slug?endpoint=[endpoint_name]'>[endpoint_name]</a>"; </b> example to return POST endpoint name to another specified page to process it
+<li><b>endpoint_link_pattern = "<a href='[calling_url]?ep=[endpoint_name]&epu=[endpoint_url]'>[endpoint_name]</a>"; </b> example to return custom POST args to the calling page</ul>
+<li><b>endpoint_integration_call = "";  alternative function to call to provide the endpoint_url based on endpoint_name
+<li>Method <b>AddNodeList($nodes)</b> to manually add items to the list
+<li>Method <b>BuildTree()</b> returns the HTML and populates <b>HTML_out</b>
+<li>Method <b>GetNestedNodes($node)</b> returns a distinct array of all list items that match the <b>$node</b> at the next nest_level/sub level
+<li>Method <b>GetIcon($icon, $isize='s')</b> returns the IMG tag HTML for the specified icon (see icon list above)
+<li>Method <b>ImportSource($source)</b> imports the path list from a number of different sources
+<li>Method <b>ListFolder($path)</b> outputs a recursive array of files or folders for a given $path
+
+<h2>Feature Backlog</h2>
+<p>Please email <b><a href="mailto:wolfecandy@ruralcheshire.co.uk">wolfecandy@ruralcheshire.co.uk</a></b> if you would like to see these features (or others) included.</p>
+<li>Additional icon and template sets
+<li>Max numbers and/or pagination
+<li>Color themes as a sortcode argument using XML templates
+<li>Sort lists
+<li>List page, post or user hierarchy from Word Press database
+<li><b>page-hierarchy</b> displays the site-map which is a hierarchy of pages that make up the <b>Word Press</b> site
+<li>Build a virtual hierarchy in a database table
+<li>Allow custom endpoint links through .TRV files or database entries
+
+<hr>
+<h2>The Small Print....</h2>
+<p>This plugin software is released under the GPLv2 (or later) <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html">GNU General Public License</a> from the Free Software Foundation. Please check restrictions on commercial use or purchase a commercial license.</p>
+<p><a href="https://www.paypal.com/donate/?hosted_button_id=DY2RMD3J4SR3Q">Donate</a> if you are able to so that the plugins can be maintained and enhanced - especially if you use it and find it useful! Feature enhancements can be paid for or requested (BTW they are considered high priority when coming from a donator!).<b>If everyone donated just $1 for every download they use, it keeps the development going!</b></p>
+<P>   This program is distributed in the hope that it will be useful,
+    but <b>WITHOUT ANY WARRANTY</b>; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html">GNU General Public License</a> for more details.
+</P>
+<p>This plugin comes without support unless the licence or enhanced support is explicitly stated as provided. </p>
+<p>The plugin is installed at the user's own risk. No liability is accepted for any damage to data or any consequential damage whatsoever when using this plugin. In any event this is strictly limited to the annual license fee paid.</p>
+<p>Do not expect the code to be top quality. Much of the designs evolve from MVP and often there is redundant code in the files. Most of the code is commented but isnt always consistent. Some of the functions are not as optimised as they could be or the code as well written or structured as it could be. Some chunks of code are commented out for future use. Tinker with it all at your own peril.</p>
+<p>However the code is written with passion - <b>and it works!</b></p>
+<p>Please provide honest feedback and ratings so that the plugin user commmunity can grow.</p>
+<p>Any support issues, feature requests or queries can be emailed to <b><a href="mailto:wolfecandy@ruralcheshire.co.uk">wolfecandy@ruralcheshire.co.uk</a></b>. A response is not guaranteed but our head developer, <b>Jrack Wolfe</b> is keen to hear from you.
+<p><b>&copy Copyright Wolfe Candy Creations 2022</b></p>

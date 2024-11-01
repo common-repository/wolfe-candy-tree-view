@@ -1,0 +1,147 @@
+.wlfc_tree{
+	--border: #ddd;
+	--border-hover: #aaa;
+	--bg-hover: #eee;
+	--text: #888;
+	--text-hover: #000;
+	--ident: 20px;
+	--left: -20px;
+	
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+}
+
+.wlfc_tree a { text-decoration: none; }
+
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+body {
+  padding:50px;
+  font-family:helvetica, arial,sans-serif;
+}
+ul {
+  margin-left:var(--ident);
+}
+ol {
+  margin-left:var(--ident);
+}
+
+.wlfc_tree li, 
+.wlfc_tree li ul,
+.wlfc_tree li ol, 
+.wlfc_tree ul li{
+    list-style-type: none;
+    margin:10px 0 10px 10px;
+    position: relative;
+    &:before {
+      content: "";
+      position: absolute;
+      top:-10px;
+      left:var(--left);
+      border-left: 1px solid var(--border);
+      border-bottom:1px solid var(--border);
+      width:var(--ident);
+      height:15px;
+    }
+    &:after {
+      position:absolute;
+      content:"";
+      top:5px;
+      left:var(--left);
+      border-left: 1px solid var(--border);
+      border-top:1px solid var(--border);
+      width:var(--ident);
+      height:100%;
+    }
+    &:last-child:after {
+      display:none;
+    }
+  }
+ 
+ #L1{
+	background: #002b80;
+ }
+ 
+ #S1{
+ 	background: #fcf299;
+ }
+ 
+ #L2{
+	background: #003399;
+ }
+ 
+ #S2{
+ 	background: #fcf3b8;
+ }
+ 
+ #S3{
+	background: #fcf5c6;
+ }
+ 
+ #L3{
+ 	background: #0044cc;
+ }
+ 
+ #L4{
+	background: #0055ff;
+ }
+ 
+ #S4{
+	background: #fcf7d4;
+ }
+
+ 
+ #S5{
+	background: #fcf8de;
+ }
+ 
+ #L5{
+ 	background: #1966ff;
+ }
+
+ 
+ #S6{
+	background: #fcf9e6;
+ }
+ 
+ #L6{
+ 	background: #4d88ff;
+ }
+
+ 
+ #S7{
+	background: #fcfaef;
+ }
+ 
+ #L7{
+ 	background: #6699ff;
+ }
+ 
+ .endpoint{
+	background: white;
+ }
+
+ .wlfc_tree li span {
+    display:block;
+    border: 1px solid var(--border);
+    padding:10px;
+    color:var(--text);
+    text-decoration:none;
+    }
+
+.wlfc_tree ol span:hover,
+.wlfc_tree ol span:focus,
+.wlfc_tree ul span:hover,
+.wlfc_tree ul span:focus,
+.wlfc_tree li span:focus,
+.wlfc_tree li span:hover{
+        background: var(--bg-hover); 
+        color: var(--text-hover); 
+        border: 2px solid var(--border-hover);
+        }
+      
+  

@@ -1,0 +1,98 @@
+ 
+/*  container*/
+.wlfc_tree
+{
+    z-index: 1;
+    margin-bottom: 4em;
+	
+	font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1em;
+
+    text-align: center;
+
+    color: #444444;
+    background-color: #d0d0d0;
+
+}
+
+/* . pure-tree */
+span 
+{
+    text-align: left;
+    display: block;
+    &.main-tree
+    {
+        width: 30em;
+        display: inline-block;
+    }
+    &:not(.main-tree)
+    {
+        padding-left: 1.2em;
+        li
+        {
+            overflow: hidden;
+            height: 0;
+            display: block;
+        }
+    }
+	/* . label*/
+    .node
+    {
+        display: block;
+        cursor: pointer;
+        color: #717780;
+        border-bottom: 1px dashed #B0B9C5;
+        padding: 1.125em 1.125em 1.125em 0;
+        &:before
+        {
+            width: 1em;
+            height: 1em;
+            line-height: 1em;
+            display: inline-block;
+            font-family: 'FontAwesome', sans-serif;
+            content: "\f114";
+            padding-right: .75em;
+        }
+        &:hover
+        {
+            color: #434a58;
+            border-bottom-color: #434a58;
+        }
+    }
+	/* pure-tree_link . */
+    .endpoint
+    {
+        a
+        {
+            padding: 1.500em 1.125em 0.750em 0;
+            display: block;
+            border-radius: .2em;
+            color: #717780;
+            text-decoration: none;
+            &:hover
+            {
+                color: #434a58;
+            }
+        }
+    }
+	/* nested  */
+    &.middle
+    {
+        padding-left: 1.7em;
+    }
+    [type="checkbox"]
+    {
+        display: none;
+        &:checked + label 
+        {
+            color: #434a58;
+            border-bottom-color: #434a58;
+        }
+        &:checked ~ ul > li
+        {
+            height: auto;
+        }
+    }
+}

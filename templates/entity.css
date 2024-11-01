@@ -1,0 +1,80 @@
+body {
+  font-family: Calibri, Segoe, "Segoe UI", "Gill Sans", "Gill Sans MT", sans-serif;
+}
+
+.wlfc_tree, .wlfc_tree ul, .wlfc_tree li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.wlfc_tree a { text-decoration: none; }
+
+.wlfc_tree {
+    margin: 0 0 1em;
+    text-align: center;
+}
+.wlfc_tree, .wlfc_tree ul {
+    display: table;
+}
+.wlfc_tree ul {
+  width: 100%;
+}
+    .wlfc_tree li {
+        display: table-cell;
+        padding: .5em 0;
+        vertical-align: top;
+    }
+        .wlfc_tree li:before {
+            outline: solid 1px #666;
+            content: "";
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        .wlfc_tree li:first-child:before {left: 50%;}
+        .wlfc_tree li:last-child:before {right: 50%;}
+
+        .wlfc_tree endpoint, .wlfc_tree span {
+            border: solid .1em #666;
+            border-radius: .2em;
+            display: inline-block;
+            margin: 0 .2em .5em;
+            padding: .2em .5em;
+            position: relative;
+        }
+
+        .wlfc_tree endpoint {
+            font-family: monaco, Consolas, 'Lucida Console', monospace;
+        }
+
+           .wlfc_tree ul:before,
+           .wlfc_tree span:before {
+                outline: solid 1px #666;
+                content: "";
+                height: .5em;
+                left: 50%;
+                position: absolute;
+            }
+            .wlfc_tree ul:before {
+                top: -.5em;
+            }
+            .wlfc_tree span:before {
+                top: -.55em;
+            }
+
+.wlfc_tree .node{
+    padding: 10px;
+}
+
+.wlfc_tree > li {margin-top: 0;}
+    .wlfc_tree > li:before,
+    .wlfc_tree > li:after,
+    .wlfc_tree > li > endpoint:before,
+	.wlfc_tree > li > endpoint:after,
+    .wlfc_tree > li > span:before {
+      outline: none;
+    }
+	
